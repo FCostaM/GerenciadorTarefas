@@ -13,6 +13,7 @@ namespace GerenciadorTarefas.Api.Controllers
         [HttpPost]
         [Route("[action]")]
         [ProducesResponseType(typeof(SuccessResponse<TaskResponse>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         public IActionResult CreateTask([FromBody] TaskRequest tarefa)
         {
             var response = new CreateTaskUseCase().Execute(tarefa);
@@ -43,6 +44,7 @@ namespace GerenciadorTarefas.Api.Controllers
         [HttpPut]
         [Route("[action]/{id}")]
         [ProducesResponseType(typeof(SuccessResponse<TaskResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         public IActionResult EditTask([FromRoute] int id, [FromBody] TaskRequest tarefa)
         {
             var response = new EditTaskUseCase().Execute(id, tarefa);

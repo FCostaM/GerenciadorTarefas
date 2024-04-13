@@ -7,7 +7,7 @@ namespace GerenciadorTarefas.Application.UseCases.Tasks
     {
         public List<TaskResponse> Execute()
         {
-            //business logic
+            //Business logic here
 
             return new List<TaskResponse>()
             {

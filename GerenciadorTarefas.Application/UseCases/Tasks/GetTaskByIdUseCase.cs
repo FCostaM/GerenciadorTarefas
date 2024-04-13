@@ -1,5 +1,7 @@
-﻿using GerenciadorTarefas.Communication.Enums;
+﻿using GerenciadorTarefas.Communication.Contants;
+using GerenciadorTarefas.Communication.Enums;
 using GerenciadorTarefas.Communication.Responses;
+using GerenciadorTarefas.Exceptions;
 
 namespace GerenciadorTarefas.Application.UseCases.Tasks
 {
@@ -7,6 +9,8 @@ namespace GerenciadorTarefas.Application.UseCases.Tasks
     {
         public TaskResponse Execute(int id)
         {
+            RequestValidation(id);
+
             return new TaskResponse()
             {
                 Id = id,
@@ -16,6 +20,14 @@ namespace GerenciadorTarefas.Application.UseCases.Tasks
                 LimitDate = DateTime.Now.AddDays(15),
                 Status = Status.CONCLUIDA
             };
+        }
+
+        private void RequestValidation(int id)
+        {
+            if (id <= 0)
+            {
+                throw new BadRequestException(ResponseMessage.INVALID_ID);
+            }
         }
     }
 }
