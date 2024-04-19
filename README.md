@@ -9,7 +9,7 @@ Resolução do desafio prático proposto pelo curso de C# ofertado pela RocketSe
 ### Criar uma nova tarefa
 
 ```http
-POST SimpleTask/
+POST /SimpleTask/
 ```
 
 Cria uma nova tarefa com os seguintes campos no corpo da requisição:
