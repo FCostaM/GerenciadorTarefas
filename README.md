@@ -1,8 +1,15 @@
 # Gerenciador de Tarefas Simples
 
-Resolução do desafio prático proposto pelo curso de C# ofertado pela RocketSeat. O objetivo é desenvolver uma API simples para um sistema Gerenciador de tarefas. O sistema permite o usuário criar, visualizar, editar e excluir uma tarefa.
+Resolução do desafio prático proposto pelo curso de C# ofertado pela RocketSeat. O objetivo é desenvolver uma API simples para um sistema Gerenciador de tarefas. O sistema permite o usuário criar, visualizar, editar e excluir uma tarefa. 
 
 > **Nota:** Esta API não realiza conexão com banco de dados. Todos os dados cadastrados ou retornados estçao fixos no código.
+
+O projeto está dividido em 4 camadas, sendo elas:
+
+- Camada de API: Contem as controllers e filtros de exceção da API.
+- Camada de Aplicação: Contém a implementação das regras de negócio da aplicação.
+- Camada de Comunicação: Contém as classes de requisição e retorno da API.
+- Camada de Exceção: Contém a implementação das classes customizadas de exceção que a API pode lançar.
 
 ## Documentação da API
 
@@ -162,3 +169,33 @@ Exclui uma nova tarefa a partir do seu id. Esse método não possui retorno.
 | Parameter | Type | Description |
 | :--- | :--- | :--- |
 | `id` | `int` | Id único da tarefa |
+
+## Retornos
+
+O retorno de todos os métodos dessa API seguem o seguinte formato:
+
+```json
+{
+  "success" : "true",
+  "message" : "string"
+  "data"    : "TaskResponse"
+}
+```
+
+O atributo `success` descreve se a transação foi bem-sucedida ou não.
+
+O atributo `message` contém uma mensagem utilizada para indicar erros ou, no caso da exclusão de um recurso, o sucesso de que o recurso foi excluído corretamente.
+
+O atributo `data` contém qualquer o objeto ou lista de objetos que foram criados, consultados ou atualizados pela API. Em casos de erro na requisição, esse campo nãp será retornado.
+
+## Status Codes
+
+Cada endpoint desta API pode retornar um dos seguinte status;
+
+| Status Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+| 201 | `CREATED` |
+| 400 | `BAD REQUEST` |
+| 404 | `NOT FOUND` |
+| 500 | `INTERNAL SERVER ERROR` |
