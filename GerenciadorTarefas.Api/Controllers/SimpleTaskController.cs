@@ -8,7 +8,7 @@ namespace GerenciadorTarefas.Api.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class TarefaController : ControllerBase
+    public class SimpleTaskController : ControllerBase
     {
         [HttpPost]
         [Route("[action]")]
